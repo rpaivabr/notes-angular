@@ -1,0 +1,36 @@
+<dialog
+  class="center"
+  *ngIf="open"
+  [ngStyle]="{ background: noteColor(this.noteForm.get('categoryId')!.value) }"
+>
+  <div class="dialog-content">
+    <div class="title">
+      <h2>{{ note ? "Update" : "New" }} Note</h2>
+      <button class="btn btn--close" (click)="cancel()">X</button>
+    </div>
+    <form [formGroup]="noteForm">
+      <label for="category">Category</label>
+      <select id="category" formControlName="categoryId">
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <label for="title">Title</label>
+      <input id="title" type="text" formControlName="title" />
+      <label for="content">Content</label>
+      <textarea id="content" formControlName="content" rows="3"></textarea>
+    </form>
+  </div>
+  <div class="dialog-actions">
+    <button *ngIf="note" class="btn btn--danger" (click)="remove()">
+      Delete
+    </button>
+    <button
+      class="btn btn--success"
+      [disabled]="!noteForm.valid"
+      (click)="submit()"
+    >
+      Confirm
+    </button>
+  </div>
+</dialog>

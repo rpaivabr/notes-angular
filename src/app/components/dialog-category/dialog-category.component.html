@@ -1,0 +1,27 @@
+<dialog
+  class="center"
+  *ngIf="open"
+  [ngStyle]="{ background: this.categoryForm.get('color')!.value }"
+>
+  <div class="dialog-content">
+    <div class="title">
+      <h2>{{ category ? "Update" : "New" }} Category</h2>
+      <button class="btn btn--close" (click)="cancel()">X</button>
+    </div>
+    <form [formGroup]="categoryForm">
+      <label for="color">Color</label>
+      <input id="color" type="color" formControlName="color" />
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" />
+    </form>
+  </div>
+  <div class="dialog-actions">
+    <button
+      class="btn btn--success"
+      [disabled]="!categoryForm.valid"
+      (click)="submit()"
+    >
+      Confirm
+    </button>
+  </div>
+</dialog>

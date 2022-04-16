@@ -7,7 +7,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "api": "json-server ./api/db.json --port 3333"
+    "test:coverage": "ng test --no-watch --code-coverage",
+    "api": "json-server ./api/db.json --port 3333",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -27,8 +31,10 @@
     "@angular-devkit/build-angular": "~13.2.4",
     "@angular/cli": "~13.2.4",
     "@angular/compiler-cli": "~13.2.0",
+    "@cypress/schematic": "^1.6.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "cypress": "latest",
     "jasmine-core": "~4.0.0",
     "json-server": "^0.17.0",
     "karma": "~6.3.0",
